@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://kit.fontawesome.com/988950cf62.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-4">
+        <div class="container-fluid">
+        <a class="navbar-brand" href="index.html">Gateau Time</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Nosotros
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="#">Quienes Somos</a></li>
+                <li><a class="dropdown-item" href="#">Cómo Retirar</a></li>
+                </ul>
+            </li>
+            <form class="d-flex">
+                <input class="form-control me-2" type="search" placeholder="Cuál querés buscar?" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Buscar</button>
+                </form>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    <i class="fas fa-shopping-cart"></i><span id="contadorCarrito">0</span>
+                </button>
+
+            </ul>
+
+        </div>
+        </div>
+    </nav>
+    
+    <div class="seleccion">
+        <select id="selector">
+            <option value="all">Todos</option>
+            <option value="A">Precio Ascendente</option>
+            <option value="D">Precio Descendente</option>
+        </select>
+    </div>
+    
+    <main id="container-gateaux">
+        <div class="row ">
+        <!-- <div class="card col-sm-12 col-md-6 col-lg-3 g-4">
+            <img src="./assets/img/tortaDiablo.jpg" class="card-img-top" alt="">
+            <div class="card-body">
+            <h5 class="card-title">$150</h5>
+            <p class="card-text">Cupcake con frosting de chocolate blanco</p>
+            <a href="#" class="boton-comprar btn btn-warning">Añadir al Carrito</a>
+            </div>
+        </div> -->
+        </div>
+    </main>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Carro de Compras</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" >
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-3">Nombre</div>
+                        <div class="col-md-3">Precio</div>
+                        <div class="col-md-3">Cantidad</div>
+                        <div class="col-md-3">Borrar</div>
+                    </div>
+                    <div id="contenedor-carrito">
+                    
+                    </div>
+            </div>
+            <div class="modal-footer">
+                <p class="precioProducto">Precio total: $<span id="precioTotal">0</span></p>
+                <button type="button" class="btn btn-danger">Limpiar</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                
+            </div>
+        </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="/assets/datobase.js"></script>
+    <script src="/assets/main2.js"></script>
+</body>
+</html>
