@@ -1,6 +1,8 @@
 let containerGateau = document.querySelector(".row")
 let contenedorCarrito = document.getElementById("contenedor-carrito");
 let contadorCarrito = document.getElementById('contadorCarrito')
+let botonCompra = document.getElementById('confirmaCompra')
+
 
 
 mostrarTarjetas(arrayGateaux)
@@ -108,6 +110,66 @@ function actualizarCarrito() {
     contadorCarrito.innerText = carrito.reduce((acc, el)=> acc + el.cantidad, 0)
 
 }
+
+//filtros
+
+function filtroGateau() {
+    let filtrodelProd = document.querySelector('#selectorFiltro')
+    let filtrarProd = filtrodelProd.value
+    return   (filtrarProd == "all") ? mostrarTarjetas(arrayGateaux)
+            :(filtrarProd == "A") ? ascendente()
+            :(filtrarProd == "D") ? descendente()
+            :(filtrarProd == "cero") ? cero()
+            : mostrarTarjetas(arrayGateaux);
+        
+
+}
+
+function cero (){
+    let arrayNuevo = arrayGateaux.filter(gateau => gateau.stock == 0)
+
+    mostrarTarjetas(arrayNuevo)
+}
+
+function ascendente (){
+    let gateauporPrecio = [];
+    gateauporPrecio = arrayGateaux.map(el => el);
+    gateauporPrecio = arrayGateaux;
+    gateauporPrecio.sort(function (a,b) { return b.precio - a.precio;});
+    mostrarTarjetas(gateauporPrecio)
+}
+
+function descendente (){
+    let gateauporPrecio = [];
+    gateauporPrecio = arrayGateaux.map(el => el);
+    gateauporPrecio = arrayGateaux;
+    gateauporPrecio.sort(function (a,b) { return a.precio - b.precio;});
+    mostrarTarjetas(gateauporPrecio)
+}
+
+//confirmar compra
+
+botonCompra.addEventListener("click",(e)=>{
+    e.preventDefault()
+    contenedorCarrito.innerHTML= ""
+    localStorage.clear()
+    alert("Gracias por su compra")
+    actualizarCarrito()
+})
+//buscador
+
+let inputBuscador = document.querySelector('#buscador').toLowerCase()
+
+let gateauABuscar = inputBuscador.addEventListener('keyup',buscandoGateau );
+
+function buscandoGateau(e) {
+    e.preventdefault()
+    let gateauEncontrado = []
+    let encuentra = arrayGateaux.find(element=> element.nombre.toLowerCase() == inputBuscador)
+    gateauEncontrado.push(encuentra)
+    mostrarTarjetas(gateauEncontrado)
+}
+
 
 
 

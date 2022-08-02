@@ -28,8 +28,7 @@
                 </ul>
             </li>
             <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Cuál querés buscar?" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Buscar</button>
+                <input class="form-control me-2"  id="buscador" type="text" placeholder="Cuál querés buscar?" >
                 </form>
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                     <i class="fas fa-shopping-cart"></i><span id="contadorCarrito">0</span>
@@ -42,8 +41,10 @@
     </nav>
     
     <div class="seleccion">
-        <select id="selector">
-            <option value="all">Todos</option>
+        <select id="selectorFiltro" onchange="filtroGateau();">
+            <option  selected value="">Seleccione criterio</option>
+            <option  value="all">Todos</option>
+            <option value="cero">Sin Stock</option>
             <option value="A">Precio Ascendente</option>
             <option value="D">Precio Descendente</option>
         </select>
@@ -83,7 +84,7 @@
             </div>
             <div class="modal-footer">
                 <p class="precioProducto">Precio total: $<span id="precioTotal">0</span></p>
-                <button type="button" class="btn btn-danger">Limpiar</button>
+                <button type="button" class="btn btn-success" id="confirmaCompra">Comprar</button>
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                 
             </div>
