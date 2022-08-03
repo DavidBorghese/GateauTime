@@ -158,17 +158,11 @@ botonCompra.addEventListener("click",(e)=>{
 })
 //buscador
 
-let inputBuscador = document.querySelector('#buscador').toLowerCase()
 
-let gateauABuscar = inputBuscador.addEventListener('keyup',buscandoGateau );
-
-function buscandoGateau(e) {
-    e.preventdefault()
-    let gateauEncontrado = []
-    let encuentra = arrayGateaux.find(element=> element.nombre.toLowerCase() == inputBuscador)
-    gateauEncontrado.push(encuentra)
-    mostrarTarjetas(gateauEncontrado)
-}
+let buscador = document.querySelector('#buscador')
+buscador.addEventListener('input', ()=>{
+    mostrarTarjetas(arrayGateaux.filter(item=> item.nombre.toUpperCase().includes( buscador.value.toUpperCase())))
+})
 
 
 
