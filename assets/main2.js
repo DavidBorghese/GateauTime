@@ -69,7 +69,15 @@ function agregarAlCarrito(idParam) {
         
     }
     actualizarCarrito()
-
+    Toastify({
+        text: "Producto Agregado! ",
+        duration: 3000,
+        gravity: 'bottom',
+        position: 'right',
+        style: {
+            background: 'linear-gradient(to right, #c3d52b, #71731c)'
+        }
+    }).showToast();
 }
 
 function incrementarCantidad(id) {
@@ -153,7 +161,20 @@ botonCompra.addEventListener("click",(e)=>{
     e.preventDefault()
     contenedorCarrito.innerHTML= ""
     localStorage.clear()
-    alert("Gracias por su compra")
+    // alert("Gracias por su compra")
+    Swal.fire({
+        title: 'Compra Finalizada',
+        text: 'Gracias por su Compra!',
+        icon: 'success',
+        confirmButtonText: 'OK',
+        showClass: {
+            popup: 'animate__animated animate__fadeInDown'
+        },
+        hideClass: {
+            popup: 'animate__animated animate__fadeOut'
+        }
+    })
+
     actualizarCarrito()
 })
 //buscador
