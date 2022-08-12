@@ -1,21 +1,3 @@
-// class Gateau {
-//     constructor (nombre,precio,detalle,stock,imagen){
-//         this.id = id;
-//         this.nombre = nombre;
-//         this.precio = parseFloat(precio);
-//         this.detalle = detalle;
-//         this.stock = stock;
-//         this.imagen = imagen
-//     }
-
-//     agregarIVA() {
-//         return this.precio * 1.21;
-//     }
-
-//     precioFinal() {
-//         return this.precio * 1.21 * 1.5;
-//     }
-// }
 
 let arrayGateaux = [
     {id : 1 , nombre : "Selva negra", precio : 1800 , detalle : "Torta de chocolate", stock : 5, imagen : './assets/img/selvaNegra.jpg'},

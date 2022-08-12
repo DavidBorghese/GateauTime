@@ -3,28 +3,40 @@ let contenedorCarrito = document.getElementById("contenedor-carrito");
 let contadorCarrito = document.getElementById('contadorCarrito')
 let botonCompra = document.getElementById('confirmaCompra')
 
+let arrayGateaux = []
 
 
-mostrarTarjetas(arrayGateaux)
 
 
-function mostrarTarjetas(array){
-    containerGateau.innerHTML = "";
-    array.forEach(item => {
-        let div = document.createElement('div')
-        div.className = 'card col-sm-12 col-md-6 col-lg-3 g-4'
-        div.innerHTML += `
-                            <img src="${item.imagen}" class="card-img-top" alt="">
-                            <div class="card-body">
-                                <h5 class="card-title">$${item.precio}</h5>
-                                    <p class="card-text">${item.nombre}</p>
-                                    <button onclick="agregarAlCarrito(${item.id})" class=" btn btn-warning">Añadir al Carrito</button>
-                                </div>
-                                `
-        
-        containerGateau.appendChild(div)
-    });
+async function mostrarTarjetas(){
+    try{
+        let response = await fetch('./assets/data.json');
+        let array = await response.json();
+        arrayGateaux = array
+        array.forEach(item => {
+                    let div = document.createElement('div')
+                    div.className = 'card col-sm-12 col-md-6 col-lg-3 g-4'
+                    div.innerHTML += `
+                                        <img src="${item.imagen}" class="card-img-top  card__img" alt="">
+                                        <div class="card-body">
+                                            <h5 class="card-title">$${item.precio}</h5>
+                                                <p class="card-text">${item.nombre}</p>
+                                                <button onclick="agregarAlCarrito(${item.id})" class=" btn btn-warning">Añadir al Carrito</button>
+                                            </div>
+                                            `
+                    
+                    containerGateau.appendChild(div)
+                });
+
+    }catch (error) {
+        console.log(error);
+        }
 }
+
+mostrarTarjetas()
+
+
+
 
 
 function mostrarCarrito() {
@@ -124,11 +136,11 @@ function actualizarCarrito() {
 function filtroGateau() {
     let filtrodelProd = document.querySelector('#selectorFiltro')
     let filtrarProd = filtrodelProd.value
-    return   (filtrarProd == "all") ? mostrarTarjetas(arrayGateaux)
+    return   (filtrarProd == "all") ? mostrarTarjetas()
             :(filtrarProd == "A") ? ascendente()
             :(filtrarProd == "D") ? descendente()
             :(filtrarProd == "cero") ? cero()
-            : mostrarTarjetas(arrayGateaux);
+            : mostrarTarjetas();
         
 
 }

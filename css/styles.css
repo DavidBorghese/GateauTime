@@ -4,10 +4,23 @@
     box-sizing: border-box;
 }
 
+body {
+    background-image: url('/assets/img/chocBackImg.jpg');
+    overflow-x: hidden;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
 
 
 .navbar-collapse {
 	flex-grow: initial;
+}
+
+.header__logo {
+	height: 5rem;
+	width: 16rem ;
 }
 
 .btn{
@@ -17,7 +30,7 @@
 .seleccion {
     text-align: center;
 }
-#selec {
+#selectorFiltro {
     width: 50%;
 }
 
@@ -31,4 +44,17 @@ select {
     padding: 10px;
     margin-bottom: 20px;
     box-shadow: 2px 6px 3px 3px rgba(0, 0, 0, 0.3);
+}
+
+.card__img {
+    max-width: 100%;
+    height: auto;
+}
+
+#container-gateaux {
+    max-width: 1200px;
+    margin: 60px auto;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
 }
