@@ -5,37 +5,42 @@ let botonCompra = document.getElementById('confirmaCompra')
 
 let arrayGateaux = []
 
+function mostrarTarjetas(array){
+    containerGateau.innerHTML=""
+    array.forEach(item => {
+        let div = document.createElement('div')
+        div.className = 'card col-sm-12 col-md-6 col-lg-3 g-4'
+        div.innerHTML += `
+                            <img src="${item.imagen}" class="card-img-top  card__img" alt="">
+                            <div class="card-body">
+                                <h5 class="card-title">$${item.precio}</h5>
+                                    <p class="card-text">${item.nombre}</p>
+                                    <button onclick="agregarAlCarrito(${item.id})" class=" btn btn-warning">Añadir al Carrito</button>
+                                </div>
+                                `
+                    
+        containerGateau.appendChild(div)
+    });
 
+    }
 
-
-async function mostrarTarjetas(){
+async function obtenerDatos() {
     try{
         let response = await fetch('./assets/data.json');
         let array = await response.json();
         arrayGateaux = array
-        array.forEach(item => {
-                    let div = document.createElement('div')
-                    div.className = 'card col-sm-12 col-md-6 col-lg-3 g-4'
-                    div.innerHTML += `
-                                        <img src="${item.imagen}" class="card-img-top  card__img" alt="">
-                                        <div class="card-body">
-                                            <h5 class="card-title">$${item.precio}</h5>
-                                                <p class="card-text">${item.nombre}</p>
-                                                <button onclick="agregarAlCarrito(${item.id})" class=" btn btn-warning">Añadir al Carrito</button>
-                                            </div>
-                                            `
-                    
-                    containerGateau.appendChild(div)
-                });
-
+        mostrarTarjetas(arrayGateaux)
     }catch (error) {
-        console.log(error);
+        Swal.fire({        
+            imageUrl: 'https://http.cat/[417]',
+            imageWidth: 500,
+            imageHeight: 400,
+            imageAlt: 'Gato mojado',
+        })
         }
 }
 
-mostrarTarjetas()
-
-
+obtenerDatos()
 
 
 
@@ -48,7 +53,7 @@ function mostrarCarrito() {
             <p class="col-md-3 carroNombre">${element.nombre}</p>
             <p class="col-md-3 carroPrecio"> $${element.precio}</p>
             <p class="col-md-3 carroCantidad"> ${element.cantidad}</p>
-            <button class="col-md-3 boton-eliminar"><i class="fas fa-trash-alt"></i></button>
+            <button class="col-md-3 boton-eliminar btn-outline-danger"><i class="fas fa-trash-alt"></i></button>
         </div>
         `
         let botonesBorrar = contenedorCarrito.querySelectorAll(".boton-eliminar");
@@ -108,7 +113,7 @@ function isInCarrito(id) {
 
 function borrarElemento(e) {
     btn = e.target;
-    btn.parentElement.remove();
+    btn.parentElement.parentElement.remove();
     actualizarCarrito()
 
 }
@@ -136,11 +141,11 @@ function actualizarCarrito() {
 function filtroGateau() {
     let filtrodelProd = document.querySelector('#selectorFiltro')
     let filtrarProd = filtrodelProd.value
-    return   (filtrarProd == "all") ? mostrarTarjetas()
+    return   (filtrarProd == "all") ? mostrarTarjetas(arrayGateaux)
             :(filtrarProd == "A") ? ascendente()
             :(filtrarProd == "D") ? descendente()
             :(filtrarProd == "cero") ? cero()
-            : mostrarTarjetas();
+            : mostrarTarjetas(arrayGateaux);
         
 
 }
@@ -173,7 +178,6 @@ botonCompra.addEventListener("click",(e)=>{
     e.preventDefault()
     contenedorCarrito.innerHTML= ""
     localStorage.clear()
-    // alert("Gracias por su compra")
     Swal.fire({
         title: 'Compra Finalizada',
         text: 'Gracias por su Compra!',

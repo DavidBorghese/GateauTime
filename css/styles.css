@@ -3,6 +3,9 @@
     padding: 0;
     box-sizing: border-box;
 }
+html{
+    scroll-behavior: smooth;
+}
 
 body {
     background-image: url('/assets/img/chocBackImg.jpg');
@@ -44,6 +47,7 @@ select {
     padding: 10px;
     margin-bottom: 20px;
     box-shadow: 2px 6px 3px 3px rgba(0, 0, 0, 0.3);
+    background-color: rgba(255, 255, 255, 0.788);
 }
 
 .card__img {
@@ -57,4 +61,42 @@ select {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+}
+
+.modal-content{
+    background-color:black ;
+	color: orange;
+}
+
+.carroItems{
+    border-radius: 10px;
+    border: 1px solid orange;
+    padding-top: 5px;
+
+}
+
+.boton-eliminar {
+    background-color:black;
+    color: red;
+    border-radius: 6px;
+    border: none;
+    font-size: 20px;
+}
+
+.boton-eliminar:hover {
+    cursor: pointer;
+}
+.boton-eliminar:focus {
+    outline: none;
+}
+
+.footer__gateau{
+    background-color: black;
+
+}
+
+.footer__texto{
+    color: orange;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 20px;
 }
