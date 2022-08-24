@@ -10,10 +10,10 @@ html{
 body {
     background-image: url('/assets/img/chocBackImg.jpg');
     overflow-x: hidden;
-    background-attachment: fixed;
+    background-attachment: fixed; 
     background-position: center;
     background-repeat: no-repeat;
-    background-size: 100%;
+    background-size: 210%;
 }
 
 
