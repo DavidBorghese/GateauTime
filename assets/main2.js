@@ -146,8 +146,6 @@ function filtroGateau() {
             :(filtrarProd == "D") ? descendente()
             :(filtrarProd == "cero") ? cero()
             : mostrarTarjetas(arrayGateaux);
-        
-
 }
 
 function cero (){
@@ -171,6 +169,7 @@ function descendente (){
     gateauporPrecio.sort(function (a,b) { return a.precio - b.precio;});
     mostrarTarjetas(gateauporPrecio)
 }
+
 
 //confirmar compra
 

@@ -43,6 +43,15 @@ select {
     border: 1px solid lightskyblue;
 }
 
+.precioProducto{
+    font-size: 20px;
+}
+
+#precioTotal{
+    font-size: 20px;
+    font-weight: bolder;
+}
+
 .card {
     padding: 10px;
     margin-bottom: 20px;
